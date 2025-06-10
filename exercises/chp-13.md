@@ -68,11 +68,11 @@ _id INT NOT NULL AUTO_INCREMENT,
 PRIMARY KEY(_id)
 );
 
-#2
+#2 db.회원.insertOne({_id: "m222", 메모: "임시 회원임"});
 ALTER TABLE 회원
 ADD 탈퇴 날짜 DATETIME;
 
-#3
+#3 db.회원.find();
 DROP TABLE 회원;
 ```
 
@@ -119,14 +119,14 @@ WHERE 성별="여"
 ```
 
 1. db.회원.insertOne({_id: "m111", 나이: 55, 성별: "남"});
-2. ___
+2. __db.회원.insertOne({_id: "m222", 메모: "임시 회원임"}); _
 3. db.회원.find();
-4. ___
-5. ___
+4. __db.회원.find({성별: {$ne: "남"}}, {_id: 1, 성별: 1});_
+5. db.회원.find({성별: "남"}).sort({나이: 1});___
 6. db.회원.find({_id:{$exist:true}}).count();
-7. ___
+7. db.회원.updateMany({나이: {$gt: 25}}, {$set: {성별: "여"}});___
 8. db.회원.deleteMany({});
-9. ___
+9. _db.회원.deleteMany({성별: "여"});__
 
 **10 4가지 NoSQL 데이터베이스 유형의 특성을 비교 • 요약하시오.**
 NoSQL 데이터베이스 유형별 특성 비교
